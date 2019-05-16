@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<p>{{ homeworks|length }} Assignments</p>
+	<div class="float-center">
+		<form method="post">
+    		Target: <input type="text" name="target" autocomplete="off" required style="width:80px" placeholder="Homework">
+    		Description: <input type="text" name="description" autocomplete="off" placeholder="None">
+    		DDL: <input type="text" name="ddl" autocomplete="off" required placeholder="xxxx-xx-xx">
+    		<input class="btn" type="submit" name="submit" value="Add" style="width:60px;display:inline-block;">
+		</form>
+	</div>
+	<table border="1" class="hw-lists">
+		<tr>
+			<th> Target </th>
+			<th> Description </th>
+			<th> DDL </th>
+		</tr>
+		{% for hw in homeworks %}
+		<tr>
+			<td> {{ hw.target }} </th>
+			<td> {{ hw.description }} </th>
+			<td> {{ hw.ddl }} </th>
+		</tr>
+		{% endfor %}
+	</table>
+	<!--<ul>
+		{% for hw in homeworks %}
+		<li>{{ hw.target }} - {{ hw.description }} - {{ hw.ddl }}</li>
+		{% endfor %}
+	</ul>
+	-->
+	<img alt="Xiaoxiaohei" class= "xxh" src="{{ url_for('static', filename='images/xxh.gif') }}" width="100" height="100">
+{% endblock %}
