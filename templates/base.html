@@ -10,6 +10,9 @@
 	{% endblock %}
 </head>
 <body>
+	{% for message in get_flashed_messages() %}
+    	<div class="alert">{{ message }}</div>
+	{% endfor %}
 	<h2>
 		<img alt="Avatar" src="{{ url_for('static', filename='images/xxh-2.jpg') }}" width="80" height="60">
 		{{ user.name }}'s ToDoList

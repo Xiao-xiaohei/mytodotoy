@@ -27,9 +27,10 @@ td:hover {
 }
 
 td {
-	padding: 12px 24px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 2px solid #ddd;
 }
 
 td:last-child {
@@ -119,10 +120,10 @@ input[name=ddl] {
     text-decoration: none;
     cursor: pointer;
     background-color: white;
+    text-align: center;
     color: black;
     border: 1px solid #555555;
     border-radius: 5px;
-    float: right;
 }
 
 .btn:hover {
@@ -130,4 +131,45 @@ input[name=ddl] {
     background-color: black;
     color: white;
     border: 1px solid black;
+}
+
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -40px;
+    
+    /* 淡入 - 1秒内从 0% 到 100% 显示: */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

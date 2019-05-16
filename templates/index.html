@@ -4,10 +4,10 @@
 	<p>{{ homeworks|length }} Assignments</p>
 	<div class="float-center">
 		<form method="post">
-    		Target: <input type="text" name="target" autocomplete="off" required style="width:80px" placeholder="Homework">
-    		Description: <input type="text" name="description" autocomplete="off" placeholder="None">
-    		DDL: <input type="text" name="ddl" autocomplete="off" required placeholder="xxxx-xx-xx">
-    		<input class="btn" type="submit" name="submit" value="Add" style="width:60px;display:inline-block;">
+			Target: <input type="text" name="target" autocomplete="off" required style="width:80px" placeholder="Homework">
+			Description: <input type="text" name="description" autocomplete="off" placeholder="None">
+			DDL: <input type="text" name="ddl" autocomplete="off" required placeholder="xxxx-xx-xx">
+			<input class="btn" type="submit" name="submit" value="Add" style="width:60px;display:inline-block;">
 		</form>
 	</div>
 	<table border="1" class="hw-lists">
@@ -15,12 +15,45 @@
 			<th> Target </th>
 			<th> Description </th>
 			<th> DDL </th>
+			<th> State </th>
+			<th> Operate </th>
 		</tr>
 		{% for hw in homeworks %}
 		<tr>
-			<td> {{ hw.target }} </th>
-			<td> {{ hw.description }} </th>
-			<td> {{ hw.ddl }} </th>
+			<td> {{ hw.target }} </td>
+			<td> {{ hw.description }} </td>
+			<td> {{ hw.ddl }} </td>
+			<td>
+				{% if hw.state %}
+				<span style="color:green">Finished!</span>
+				{% else %}
+				<span style="color:red">Unfinished!</span>
+				{% endif %}
+			</td>
+			<td>
+				<div class="float-right">
+					<form method="post" action="{{ url_for('change', hw_id=hw.id) }}" style="display: inline-block;">
+						<div class="tooltip">
+							<input class="btn" type="submit" name="change" style="width: 30px; height: 30px" value="C"/>
+							<span class="tooltiptext">Change it.</span>
+						</div>
+					</form>
+
+					<form method="post" action="{{ url_for('delete', hw_id=hw.id) }}" style="display: inline-block;">
+						<div class="tooltip">
+							<input class="btn" type="submit" name="delete" onclick="return confirm('Are you sure?')" style="width: 30px; height: 30px" value="D"/>
+							<span class="tooltiptext">Delete it.</span>
+						</div>
+					</form>
+
+					<form method="get" action="{{ url_for('edit', hw_id=hw.id) }}" style="display: inline-block;">
+						<div class="tooltip">
+							<input class="btn" type="submit" name="edit" style="width: 30px;height: 30px;" value="E"/>
+							<span class="tooltiptext">Edit it.</span>
+						</div>
+					</form>
+				</div>
+			</td>
 		</tr>
 		{% endfor %}
 	</table>

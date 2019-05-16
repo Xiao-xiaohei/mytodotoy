@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Edit item</h3>
+<form method="post">
+    Target <input type="text" name="target" autocomplete="off" required value="{{ hw.target }}" style="width:80px">
+    Description <input type="text" name="description" autocomplete="off" value="{{ hw.description }}">
+    DDL <input type="text" name="ddl" autocomplete="off" value="{{ hw.ddl }}">
+    <input class="btn" type="submit" name="submit" value="Update" style="width:60px;display:inline-block;">
+</form>
+{% endblock %}
