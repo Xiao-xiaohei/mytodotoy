@@ -22,6 +22,10 @@ table {
 	margin-bottom: 10px;
 }
 
+.welcome_xxh {
+	margin-left:10%;
+}
+
 td:hover {
 	background-color: #f8f9fa;
 }

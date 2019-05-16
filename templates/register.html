@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% block head %}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	{% if user %}
-	<title>{{ user.name }}'s ToDoList</title>
-	{% else %}
-	<title>ToDoList</title>
-	{% endif %}
+	<title>Register</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css" charset="utf-8">
 	<link rel="icon" href="{{ url_for('static', filename='images/xxh.jpg') }}">
-	{% endblock %}
 </head>
 <body>
 	{% for message in get_flashed_messages() %}
@@ -19,20 +13,25 @@
 	{% endfor %}
 	<h2>
 		<img alt="Avatar" src="{{ url_for('static', filename='images/xxh-2.jpg') }}" width="80" height="60">
-		{% if user.name %}
-			{{ user.name }}'s ToDoList
-		{% else %}
-			ToDoList
-		{% endif %}
+		Register
 	</h2>
 	<nav>
 		<ul>
 			<li><a href="{{ url_for('index') }}">Home</a></li>
-			<li><a href="{{ url_for('settings') }}">Settings</a></li>
-			<li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
 	</nav>
-	{% block content %}{% endblock %}
+	<form method="post" action="{{ url_for('register') }}">
+		<br>
+		Name<br>
+    	<input type="text" name="name" required><br><br>
+		Username<br>
+    	<input type="text" name="username" required><br><br>
+    	Password<br>
+   		<input type="password" name="password" required><br><br>
+    	Password Confirm<br>
+   		<input type="password" name="password_second" required><br><br>
+    	<input class="btn" type="submit" name="confirm" value="Confirm">
+	</form>
 	<footer>
 		<small>&copy; 2019 <a href="https://github.com/Xiao-xiaohei">Xiao-xiaohei</a></small>
 	</footer>
