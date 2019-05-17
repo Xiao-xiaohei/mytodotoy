@@ -147,13 +147,13 @@ def index():
 		if not target or not ddl or len(ddl) > 10 or len(target) > 60 or not if_ddl(ddl):
 			flash('Invalid input.')
 			return redirect(url_for('index'))
-		assignment = Assignment(target=target, description=description, ddl=ddl)
+		assignment = Assignment(target=target, description=description, ddl=ddl, user_id=current_user.id)
 		db.session.add(assignment)
 		db.session.commit()
 		flash('Item created.')
 		return redirect(url_for('index'))
 
-	homeworks = Assignment.query.all()
+	homeworks = Assignment.query.filter_by(user_id=current_user.id).all()
 	return render_template('index.html', homeworks=homeworks)
 
 @app.errorhandler(404)
